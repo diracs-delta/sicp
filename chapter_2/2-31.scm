@@ -1,0 +1,11 @@
+(define (tree-map proc tree)
+  (map (lambda (l)
+    (if (pair? l)
+      (tree-map proc l)
+      (proc l)
+    )
+  ) tree)
+)
+
+(define t1 (list 1 (list 2 (list 3 4) 5) (list 6 7)))
+(tree-map square t1)

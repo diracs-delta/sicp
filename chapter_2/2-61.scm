@@ -1,0 +1,16 @@
+(define (adjoin-set x set)
+  (if (null? set) (cons x '())
+    (let ((first (car set)) (rest (cdr set)))
+      (cond
+        ((< x first) (cons x set))
+        ((= x first) set)
+        (else (cons first (adjoin-set x rest)))
+      )
+    )
+  )
+)
+
+(adjoin-set 7 '(0 2 4 6 8))
+(adjoin-set 6 '(0 2 4 6 8))
+(adjoin-set -2 '(0 2 4 6 8))
+(adjoin-set 222 '(1 2 3))

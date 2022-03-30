@@ -1,0 +1,21 @@
+; first impl
+(define (below p1 p2)
+  (let ((below (transform-painter painter (make-vect 0.0 0.0)
+                                          (make-vect 1.0 0.0)
+                                          (make-vect 0.0 0.5)
+        ))
+        (above (transform-painter painter (make-vect 0.0 0.5)
+                                          (make-vect 1.0 0.5)
+                                          (make-vect 0.0 1.0)
+        )))
+    (lambda (frame)
+      (below frame)
+      (above frame)
+    )
+  )
+)
+
+; second impl
+(define (below p1 p2)
+  (rot-270-ccw (beside (flip-horiz p2) (flip-horiz p1)))
+)

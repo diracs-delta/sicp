@@ -1,0 +1,38 @@
+(define (union-list l1 l2)
+  (cond
+    ((null? l1) l2)
+    ((null? l2) l1)
+    (else (let ((x1 (car l1)) (x2 (car l2)) (r1 (cdr l1)) (r2 (cdr l2)))
+      (cond
+        ((< x1 x2) (cons x1 (union-list r1 l2)))
+        ((> x1 x2) (cons x2 (union-list l1 r2)))
+        (else (cons x1 (union-list r1 r2)))
+      )
+    ))
+  )
+)
+
+(define (intersection-list l1 l2)
+  (if (or (null? l1) (null? l2))
+    '()
+    (let ((x1 (car l1)) (x2 (car l2)) (r1 (cdr l1)) (r2 (cdr l2)))
+      (cond
+        ((< x1 x2) (intersection-list r1 l2))
+        ((> x1 x2) (intersection-list l1 r2))
+        (else (cons x1 (intersection-list r1 r2)))
+      )
+    )
+  )
+)
+
+(define (union-set s1 s2)
+  (let ((l1 (tree->list s1)) (l2 (tree->list s2)))
+    (list->tree (union-list l1 l2))
+  )
+)
+
+(define (intersection-set s1 s2)
+  (let ((l1 (tree->list s1)) (l2 (tree->list s2)))
+    (list->tree (intersection-list l1 l2))
+  )
+)

@@ -16,8 +16,10 @@ KaTeX-compatible markup.
 - Disable `Markdown > Extension > Math`. This disables `markdown-all-in-one`'s
   basic KaTeX engine and favors `mdmath`'s more advanced KaTeX engine.
 
+- Restart VSCode.
+
 In my workflow, I usually use a split view, with raw MarkDown on the left and
-the rendered preview output on the right. I really *should* have some kind of
+the rendered preview output on the right. I really _should_ have some kind of
 script that compiles these Kramdown files into PDFs, but that's another entry on
 the to-do stack about to overflow.
 
